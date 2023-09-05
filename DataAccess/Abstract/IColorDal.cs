@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal :IEntityRepository<Car>
-        //Core taşıdığımızdan dolayı IEntityRepository hata veriyor.
-        //Core a referans vermemiz gerekiyor.
+    public interface IColorDal:IEntityRepository<Color>
     {
-       
     }
 }
