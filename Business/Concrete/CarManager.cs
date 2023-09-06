@@ -24,16 +24,16 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            if (car.BrandName.Length < 2 && car.DailyPrice > 0)
-            {
-                Console.WriteLine("Araç Eklendi");
+            //if (car.BrandName.Length < 2 && car.DailyPrice > 0)
+            //{
+            //    Console.WriteLine("Araç Eklendi");
 
 
-            }
-            else
-            {
-                Console.WriteLine("Araç İsmi minimum 2 karakter, araç günlük fiyatı geçerli rakam olmalıdır!");
-            }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Araç İsmi minimum 2 karakter, araç günlük fiyatı geçerli rakam olmalıdır!");
+            //}
 
         }
 
@@ -49,7 +49,9 @@ namespace Business.Concrete
 
         public List<Car> GetCarsByBranID(int id)
         {
-            throw new NotImplementedException();
+            var cars = _carDal.GetAll(t => t.BrandId == id).ToList();
+
+            return cars;
         }
 
         public List<Car> GetCarsByColorId(int id)

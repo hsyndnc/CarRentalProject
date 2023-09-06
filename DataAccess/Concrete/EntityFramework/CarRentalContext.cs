@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class CarRentalContext :DbContext
+    public class CarRentalContext : DbContext
     {
         //hangi veritabanıyla ilişkili olduğunu gösteriyoruz.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -20,6 +20,8 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Car> Cars { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Color> Colors { get; set; }
+
+
+
     }
-   
 }

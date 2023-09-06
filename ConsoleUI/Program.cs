@@ -6,7 +6,7 @@ using DataAccess.Concrete.InMemory;
 CarManager carManager = new CarManager(new EfCarDal());
 foreach (var car in carManager.GetAll())
 {
-    Console.WriteLine(car.BrandName);
+    Console.WriteLine(car.DailyPrice);
 
 
 }
