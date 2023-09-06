@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace DataAccess.Abstract
         //Core taşıdığımızdan dolayı IEntityRepository hata veriyor.
         //Core a referans vermemiz gerekiyor.
     {
-       
+        List<CarDetailDto> GetDetails();       
     }
 }

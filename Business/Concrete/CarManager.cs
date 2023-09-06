@@ -2,6 +2,7 @@
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,16 +25,16 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            //if (car.BrandName.Length < 2 && car.DailyPrice > 0)
-            //{
-            //    Console.WriteLine("Araç Eklendi");
+            if (car.BrandName.Length > 2 && car.DailyPrice > 0)
+            {
+                Console.WriteLine("Araç Eklendi");
 
 
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Araç İsmi minimum 2 karakter, araç günlük fiyatı geçerli rakam olmalıdır!");
-            //}
+            }
+            else
+            {
+                Console.WriteLine("Araç İsmi minimum 2 karakter, araç günlük fiyatı geçerli rakam olmalıdır!");
+            }
 
         }
 
@@ -56,7 +57,13 @@ namespace Business.Concrete
 
         public List<Car> GetCarsByColorId(int id)
         {
-            throw new NotImplementedException();
+            var cars = _carDal.GetAll(c => c.Id == id).ToList();
+            return cars;
+        }
+
+        public List<CarDetailDto> GetDetails()
+        {
+            return _carDal.GetDetails();
         }
 
         public void Update(Car car)
