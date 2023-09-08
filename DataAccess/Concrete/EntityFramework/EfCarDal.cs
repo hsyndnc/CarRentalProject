@@ -27,11 +27,11 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from c in context.Cars
                              join col in context.Colors
-                             on c.Id equals col.ColorId
+                             on c.ColorId equals col.Id
                              select new CarDetailDto
                              {
                                  Id = c.Id,
-                                 BrandName = c.BrandName,
+                                 
                                  ColorName = col.ColorName,
                                  DailyPrice = c.DailyPrice
                              };

@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -23,19 +25,20 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.BrandName.Length > 2 && car.DailyPrice > 0)
+            if (car.DailyPrice > 0)
             {
-                Console.WriteLine("Araç Eklendi");
-
+                return new SuccessResult(Messages.CarAdded);
+                _carDal.Add(car);
 
             }
             else
             {
-                Console.WriteLine("Araç İsmi minimum 2 karakter, araç günlük fiyatı geçerli rakam olmalıdır!");
+                return new ErrorResult(Messages.CarNameInvalid);              
             }
-
+               
+            
         }
 
         public void Delete(Car car)
@@ -70,5 +73,9 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+       
+
+       
     }
 }

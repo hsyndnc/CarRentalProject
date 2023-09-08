@@ -14,13 +14,13 @@ CarManager carManager = new CarManager(new EfCarDal());
 
 foreach (var car in carManager.GetCarsByColorId(1))
 {
-    Console.WriteLine(car.BrandName);
+    Console.WriteLine(car.ModelYear);
 
 
 }
 
 foreach (var car in carManager.GetDetails())
 {
-    Console.WriteLine(car.ModelYear + "/" + car.ColorName ); //hata var istenileni vermiyor. 
+    Console.WriteLine(car.DailyPrice + "/" + car.ColorName ); //hata var istenileni vermiyor. 
 }
 

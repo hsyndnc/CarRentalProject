@@ -42,7 +42,7 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault(filter);
+                return context.Set<TEntity>().SingleOrDefault(filter) ;
                 //SingleOrDefault--Verilen filtreye uygun tek datayı getirmeye yarar.
                 //Bir Linq metodudur.
             }
@@ -50,9 +50,19 @@ namespace Core.DataAccess.EntityFramework
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
+
             using (TContext context = new TContext())
             {
-                return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+                try
+                {
+                    var ss= filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+                    return ss;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
                 //Return Operatörü
                 //filter ==null ise ilk komutu uygula değil ise ikinci komutu uygula
                 //Yani  null değilse filter ikinci kısım çalışır.
