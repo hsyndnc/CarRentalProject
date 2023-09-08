@@ -46,9 +46,9 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new DataResult<List<Car>>(_carDal.GetAll(),true,"Ürünler listlendi");
         }
 
         public List<Car> GetCarsByBranID(int id)

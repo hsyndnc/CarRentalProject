@@ -14,14 +14,18 @@ namespace Business.Abstract
 
     
     public interface ICarService
-    {
-        List<Car> GetAll();
-        List<Car> GetCarsByBranID(int id);
-        List<Car> GetCarsByColorId(int id);
+    {   
+        //Data döndürdükleri için IDataResult yapısına ihtiyaç duyduk.Hem data hem mesaj ve işlem bilgisine sahip.
+        IDataResult<List<Car>> GetAll();
+        IDataResult<List<Car>> GetCarsByBranID(int id);
+        IDataResult<List<Car>> GetCarsByColorId(int id);
+        IDataResult<List<CarDetailDto>> GetDetails();
+        
+        //Data olmayanları IResult olarak bıraktık çünkü onlar bir data döndürmüyorlar.Sadece CRUD operasyonlarını yapıyorlar.
         IResult Add(Car car);
         
-        void Delete(Car car);
-        void Update(Car car);
-        public List<CarDetailDto> GetDetails();
+        IResult Delete(Car car);
+        IResult Update(Car car);
+        
     }
 }
