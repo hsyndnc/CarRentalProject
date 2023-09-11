@@ -20,12 +20,15 @@ namespace Business.Abstract
         IDataResult<List<Car>> GetCarsByBranID(int id);
         IDataResult<List<Car>> GetCarsByColorId(int id);
         IDataResult<List<CarDetailDto>> GetDetails();
+        IDataResult<List<Car>> GetByDailyPrice(decimal min , decimal max);
         
         //Data olmayanları IResult olarak bıraktık çünkü onlar bir data döndürmüyorlar.Sadece CRUD operasyonlarını yapıyorlar.
         IResult Add(Car car);
         
         IResult Delete(Car car);
         IResult Update(Car car);
+
+        IDataResult<Car> GetById(int id);
         
     }
 }

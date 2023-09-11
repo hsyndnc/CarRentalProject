@@ -48,7 +48,21 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new DataResult<List<Car>>(_carDal.GetAll(),true,"Ürünler listlendi");
+            //if (DateTime.Now.Hour==22)
+            //{
+            //    return new ErrorDataResults<List<Car>>(Messages.MaintenanceTime);
+            //}
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarListed);
+        }
+
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
+        }
+
+        public IDataResult<Car> GetById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetCarsByBranID(int id)
@@ -64,18 +78,29 @@ namespace Business.Concrete
             return cars;
         }
 
-        public List<CarDetailDto> GetDetails()
+        public IDataResult<List<CarDetailDto>> GetDetails()
         {
-            return _carDal.GetDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetDetails());
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             throw new NotImplementedException();
         }
 
-       
+        IResult ICarService.Delete(Car car)
+        {
+            throw new NotImplementedException();
+        }
 
-       
+        IDataResult<List<Car>> ICarService.GetCarsByBranID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<List<Car>> ICarService.GetCarsByColorId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

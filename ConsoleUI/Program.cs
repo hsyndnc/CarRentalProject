@@ -1,13 +1,15 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 
 CarManager carManager = new CarManager(new EfCarDal());
-//foreach (var car in carmanager.getall())
+//foreach (var car in carManager.GetAll())
 //{
-//    console.writeline(car.brandname);
+//    Console.WriteLine(car.brandname);
 
 
 //}
@@ -19,8 +21,17 @@ foreach (var car in carManager.GetCarsByColorId(1))
 
 }
 
-foreach (var car in carManager.GetDetails())
+
+var result = carManager.GetDetails();
+if (result.Success==true)
 {
-    Console.WriteLine(car.DailyPrice + "/" + car.ColorName ); //hata var istenileni vermiyor. 
+foreach (var car in result.Data )
+    {
+        Console.WriteLine(car.DailyPrice + "/" + car.ColorName);
+
+    }
+
+
 }
+   
 

@@ -1,6 +1,17 @@
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Eðer CarManager içerisinde data tutuluyorsa kullanýlmamlý bu yapý.
+//herkes için ayný referansý tutacaðý için insanlarýn datalarý karýþýr.
+builder.Services.AddSingleton<ICarService, CarManager>();
+//
+builder.Services.AddSingleton<ICarDal , EfCarDal>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
