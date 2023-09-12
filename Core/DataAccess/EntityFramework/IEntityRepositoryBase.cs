@@ -23,7 +23,7 @@ namespace Core.DataAccess.EntityFramework
                 //Referansı yakaladık
                 addedEntity.State = EntityState.Added;
                 //Eklenebilir bir nesne olduğunu söyledik 
-                context.SaveChanges();
+                var ss = context.SaveChanges();
                 //işlemleri yaptık.
             }
         }
