@@ -42,7 +42,7 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().SingleOrDefault(filter) ;
+                return context.Set<TEntity>().SingleOrDefault(filter);
                 //SingleOrDefault--Verilen filtreye uygun tek datayı getirmeye yarar.
                 //Bir Linq metodudur.
             }
@@ -55,7 +55,7 @@ namespace Core.DataAccess.EntityFramework
             {
                 try
                 {
-                    var ss= filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
+                    var ss = filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
                     return ss;
                 }
                 catch (Exception ex)

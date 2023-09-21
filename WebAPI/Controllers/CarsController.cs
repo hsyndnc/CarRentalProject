@@ -2,6 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,9 +30,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
+        
         public IActionResult Get() 
         {
-            
+            Thread.Sleep(1000);
             var result = _carService.GetAll();
             if (result.Success)
             {

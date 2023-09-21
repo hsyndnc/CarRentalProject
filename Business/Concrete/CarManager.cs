@@ -1,12 +1,16 @@
-﻿ using Business.Abstract;
+﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,20 +31,16 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
 
-                return new SuccessResult(Messages.CarAdded);
+            ValidationTool.Validate(new CarValidator(),car);
 
-            }
-            else
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+            _carDal.Add(car);
 
-
+            return new SuccessResult(Messages.CarAdded);
         }
+
+
+
 
         public IResult Delete(Car car)
         {
@@ -74,13 +74,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(t => t.BrandId == id));
 
-            
+
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == id));
-            
+
         }
 
         public IDataResult<List<CarDetailDto>> GetDetails()
@@ -91,7 +91,7 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetDetails());
         }
-        
+
 
         public IResult Update(Car car)
         {
@@ -103,6 +103,13 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetDetails(), "Car details provided!");
 
         }
+
+        public IDataResult<List<Color>> GetColors()
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
+
 

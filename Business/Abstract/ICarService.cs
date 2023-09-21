@@ -21,7 +21,7 @@ namespace Business.Abstract
         IDataResult<List<Car>> GetCarsByColorId(int id);
         IDataResult<List<CarDetailDto>> GetDetails();
         IDataResult<List<Car>> GetByDailyPrice(decimal min , decimal max);
-        
+        IDataResult<List<Color>>GetColors();
         //Data olmayanları IResult olarak bıraktık çünkü onlar bir data döndürmüyorlar.Sadece CRUD operasyonlarını yapıyorlar.
         IResult Add(Car car);
         

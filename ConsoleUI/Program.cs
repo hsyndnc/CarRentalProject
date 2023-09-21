@@ -14,12 +14,12 @@ CarManager carManager = new CarManager(new EfCarDal());
 
 //}
 
-foreach (var car in carManager.GetCarsByColorId(1))
-{
-    Console.WriteLine(car.ModelYear);
+//foreach (var car in carManager.GetCarsByColorId(1))
+//{
+//    Console.WriteLine(car.ModelYear);
 
 
-}
+//}
 
 
 var result = carManager.GetDetails();
