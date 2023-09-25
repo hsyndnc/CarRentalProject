@@ -77,6 +77,16 @@ namespace WebAPI.Controllers
             }
                 return BadRequest(result);
         }
+        [HttpGet("getbycategory")]
+        public IActionResult GetbyCategoryId(int categoryId)
+        {
+            var result = _carService.GetbyCategoryId(categoryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPost]
         public IActionResult Post(Car car)

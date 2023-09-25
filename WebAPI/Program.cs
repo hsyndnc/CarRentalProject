@@ -5,7 +5,7 @@ using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,9 @@ builder.Services.AddSingleton<ICarService, CarManager>();
 builder.Services.AddSingleton<ICarDal , EfCarDal>();
 
 builder.Services.AddSingleton<ICategoryService, CategoryManager>();
-builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();   
+builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
+builder.Services.AddSingleton<IUserService, UserManager>();
+builder.Services.AddSingleton<IUserDal,EfUserDal>();
 
 
 //var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";

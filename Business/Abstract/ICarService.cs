@@ -12,7 +12,7 @@ namespace Business.Abstract
     //Bir iş sınıfı başka sınıfları new lemez 
     //Dependecy Injection kullan
 
-    
+
     public interface ICarService
     {   
         //Data döndürdükleri için IDataResult yapısına ihtiyaç duyduk.Hem data hem mesaj ve işlem bilgisine sahip.
@@ -29,6 +29,6 @@ namespace Business.Abstract
         IResult Update(Car car);
 
         IDataResult<Car> GetById(int id);
-        
+        IDataResult<List<Car>> GetbyCategoryId(int categoryId);
     }
 }

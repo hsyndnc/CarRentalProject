@@ -1,16 +1,15 @@
 ﻿using Core.Entities;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Core.Entities.Concrete
 {
-    public class Color : IEntity
+    public class OperationClaim : IEntity
     {
         public int Id { get; set; }
-        public string? ColorName { get; set; }
+        public string Name { get; set; }
     }
 }

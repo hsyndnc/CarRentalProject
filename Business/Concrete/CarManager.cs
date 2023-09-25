@@ -108,6 +108,11 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public IDataResult<List<Car>> GetbyCategoryId(int categoryId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.CategoryId == categoryId));
+        }
     }
 
 }
